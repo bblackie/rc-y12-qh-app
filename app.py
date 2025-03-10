@@ -2,9 +2,8 @@ from flask import Flask,g
 import sqlite3
 app = Flask(__name__)
 
-@app.route("/")
-
 DATABASE = 'cs_weapon.db'
+
 
 def get_db():
     db = getattr(g, '_database', None)
@@ -20,12 +19,12 @@ def close_connection(exception):
 
 
 
-
+@app.route("/")
 def index():
-    curser = get_db().curser()
+    cursor = get_db().cursor()
     sql ='SELECT * FROM contents'
-    curser.execute
-    results = curser.fetchall()
+    curser.execute(sql)
+    results = cursor.fetchall()
     return str(results)
     
 if __name__=="__main__":
