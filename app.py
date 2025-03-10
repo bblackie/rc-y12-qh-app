@@ -22,7 +22,7 @@ def close_connection(exception):
 @app.route("/")
 def index():
     cursor = get_db().cursor()
-    sql ='SELECT * FROM contents'
+    sql ='SELECT * FROM CS_Skins'
     cursor.execute(sql)
     results = cursor.fetchall()
     return str(results)
