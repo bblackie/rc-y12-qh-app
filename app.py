@@ -1,4 +1,4 @@
-from flask import Flask,g
+from flask import Flask,g, render_template
 import sqlite3
 app = Flask(__name__)
 
@@ -18,9 +18,11 @@ def close_connection(exception):
         db.close()
 
 
-
 @app.route("/")
-def index():
+def home():
+
+@app.route("/contents")
+def contents():
     cursor = get_db().cursor()
     sql ='SELECT * FROM CS_Skins'
     cursor.execute(sql)
