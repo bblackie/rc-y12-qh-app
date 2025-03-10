@@ -23,7 +23,7 @@ def close_connection(exception):
 def index():
     cursor = get_db().cursor()
     sql ='SELECT * FROM contents'
-    curser.execute(sql)
+    cursor.execute(sql)
     results = cursor.fetchall()
     return str(results)
     
