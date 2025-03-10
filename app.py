@@ -20,6 +20,7 @@ def close_connection(exception):
 
 @app.route("/")
 def home():
+    render_template("home.html")
 
 @app.route("/contents")
 def contents():
