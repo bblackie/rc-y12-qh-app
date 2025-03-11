@@ -28,7 +28,7 @@ def contents():
     sql ='SELECT * FROM CS_Skins'
     cursor.execute(sql)
     results = cursor.fetchall()
-    return str(results)
+    return render_template("contents.html", result=results)
     
 if __name__=="__main__":
     app.run(debug=True)
