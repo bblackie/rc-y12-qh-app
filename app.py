@@ -1,4 +1,4 @@
-from flask import Flask,g, render_template
+from flask import Flask,g, render_template, request, redirect
 import sqlite3
 
 app = Flask(__name__)
@@ -21,16 +21,22 @@ def close_connection(exception):
 
 @app.route("/")
 def home():
-    return render_template("home.html")
-
-
-@app.route("/contents")
-def contents():
     cursor = get_db().cursor()
     sql ="SELECT * FROM CS_Skins"
     cursor.execute(sql)
     results = cursor.fetchall()
     return render_template("contents.html", results=results)
+
+@app.route('/add', methods=["GET","POST"])
+def add():
+    if request.method == "POST":
+        cursor = get_db().cursor()
+        new_name = request.form["Weapon_Name"]
+        new_Wear = request.form["Weapon_Wear"]
+        sql = "INSERT INTO CS_Skins(Weapon_id, Wear, Skin_Name) VALUES (?,?)"
+        cursor.execute(sql,(new_Weapon_id,new_Skin_name))
+        get_db().commit()
+        return redirect('/')
     
 if __name__=="__main__":
     app.run(debug=True)

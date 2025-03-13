@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href={{url_for('static',filename='styles.css')}}>
     <title>contents</title>
 </head>
 <body>
@@ -20,6 +21,12 @@
             <td>{{item[1]}}</td>
         </tr>
     </table>
+    <form action="/add" method="post">
+    <h2>Enter a new weapon</h2>
+    <input type="'text" name="Weapon_Name">
+    <input type="text" name="Weapon_Wear">
+    <input type="submit" value="add">
+    </form>
 </body>
 </html>
 
