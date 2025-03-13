@@ -1,5 +1,6 @@
 from flask import Flask,g, render_template
 import sqlite3
+
 app = Flask(__name__)
 
 DATABASE = 'cs_weapon.db'
@@ -22,13 +23,14 @@ def close_connection(exception):
 def home():
     return render_template("home.html")
 
+
 @app.route("/contents")
 def contents():
     cursor = get_db().cursor()
-    sql ='SELECT * FROM CS_Skins'
+    sql ="SELECT * FROM CS_Skins"
     cursor.execute(sql)
     results = cursor.fetchall()
-    return render_template("contents.html", result=results)
+    return render_template("contents.html", results=results)
     
 if __name__=="__main__":
     app.run(debug=True)

@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-US-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>contents</title>
 </head>
 <body>
-    {% for item in results %}
-    <h1>{{item[1]}} {{item[2]}}</h1>
-    {% endfor %}
+
 </body>
 </html>
+
+
+{% for item in results %}
+    <h1>{{item[1]}} {{item[2]}} {{item[3]}}</h1>
+    {% endfor %}
