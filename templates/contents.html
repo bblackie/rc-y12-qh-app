@@ -7,11 +7,67 @@
     <title>contents</title>
 </head>
 <body>
-
+    <table>
+        <tr>
+            <th>Weapon</th>
+            <th>wear</th>
+            <th>Skin</th>
+        </tr>
+        {% for item in results %}
+        <tr>
+            <td>{{item[4]}}</td>
+            <td>{{item[2]}}</td>
+            <td>{{item[1]}}</td>
+        </tr>
+    </table>
 </body>
 </html>
 
 
-{% for item in results %}
+<!--{% for item in results %}
     <h1>{{item[1]}} {{item[2]}} {{item[3]}}</h1>
     {% endfor %}
+
+        <tr>
+            <th>Weapon</th>
+            <th>wear</th>
+            <th>Skin</th>
+        </tr>
+        <tr>
+            <td>
+                <h1>{{item[5]}}</h1>
+            </td>
+            <td>
+                <h1>{{item[3]}}</h1>
+
+            </td>
+            <td>
+                <h1>{{item[2]}}</h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h1>{{item[5]}}</h1>
+            </td>
+            <td>
+                <h1>{{item[3]}}</h1>
+
+            </td>
+            <td>
+                <h1>{{item[2]}}</h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h1>{{item[5]}}</h1>
+            </td>
+            <td>
+                <h1>{{item[3]}}</h1>
+            </td>
+            <td>
+                <h1>{{item[2]}}</h1>
+            </td>
+        </tr>
+        {% endfor %}
+
+    
