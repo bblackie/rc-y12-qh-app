@@ -31,12 +31,13 @@ def home():
 def add():
     if request.method == "POST":
         cursor = get_db().cursor()
-        new_name = request.form["Weapon_Name"]
-        new_Wear = request.form["Weapon_Wear"]
+        new_name = request.form["Wepon_Name"]
+        new_Wear = request.form["Wepon_Wear"]
         sql = "INSERT INTO CS_Skins(Weapon_id, Wear, Skin_Name) VALUES (?,?)"
         cursor.execute(sql,(new_Weapon_id,new_Skin_name))
         get_db().commit()
-        return redirect('/')
+
+        return redirect("/")
     
 if __name__=="__main__":
     app.run(debug=True)
