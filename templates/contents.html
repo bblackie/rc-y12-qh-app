@@ -10,16 +10,17 @@
 <body>
     <table>
         <tr>
-            <th>Weapon</th>
+            <!--<th>Weapon</th>
             <th>wear</th>
             <th>Skin</th>
+        -->
         </tr>
         {% for item in results %}
-        <tr>
+        <!--<tr>
             <td>{{item[4]}}</td>
             <td>{{item[2]}}</td>
             <td>{{item[1]}}</td>
-        </tr>
+        </tr>-->
     </table>
     <form action="/add" method="post">
     <h2>Enter a new weapon</h2>
@@ -27,7 +28,7 @@
     <input type="text" name="Weapon_id">
     </h4>Wear</h4>
     <input type="text" name="Weapon_Wear">
-    </h5>$Price$</h5>
+    </h5>Skin Name</h5>
     <input type="text" name="Skin_Name">
     <input type="submit" value="add">
     </form>
@@ -35,10 +36,10 @@
 </html>
 
 
-<!--{% for item in results %}
+{% for item in results %}
     <h1>{{item[1]}} {{item[2]}} {{item[3]}}</h1>
     {% endfor %}
-
+<!---
         <tr>
             <th>Weapon</th>
             <th>wear</th>
