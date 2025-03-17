@@ -8,19 +8,6 @@
     <title>contents</title>
 </head>
 <body>
-    <table>
-        <tr>
-            <!--<th>Weapon</th>
-            <th>wear</th>
-            <th>Skin</th>
-        -->
-        </tr>
-        {% for item in results %}
-        <!--<tr>
-            <td>{{item[4]}}</td>
-            <td>{{item[2]}}</td>
-            <td>{{item[1]}}</td>
-        </tr>-->
     </table>
     <form action="/add" method="post">
     <h2>Enter a new weapon</h2>
@@ -31,15 +18,30 @@
     </h5>Skin Name</h5>
     <input type="text" name="Skin_Name">
     <input type="submit" value="add">
+    {% for item in results %}
+    <h1>{{item[1]}} {{item[2]}} {{item[3]}}</h1>
+    {% endfor %}
     </form>
 </body>
 </html>
 
 
-{% for item in results %}
+<!--<th>Weapon</th>
+            <th>wear</th>
+            <th>Skin</th>
+        
+        </tr>
+        {% for item in results %}
+        <tr>
+            <td>{{item[4]}}</td>
+            <td>{{item[2]}}</td>
+            <td>{{item[1]}}</td>
+        </tr>-->
+
+<!--{% for item in results %}
     <h1>{{item[1]}} {{item[2]}} {{item[3]}}</h1>
     {% endfor %}
-<!---
+
         <tr>
             <th>Weapon</th>
             <th>wear</th>
