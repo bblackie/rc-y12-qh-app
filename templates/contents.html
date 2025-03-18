@@ -23,6 +23,7 @@
             <th>Weapon</th>
             <th>wear</th>
             <th>Skin</th>
+            <th>$Price$</th>
             <th>delete</th>
         </tr>
         {% for item in results %}
@@ -30,6 +31,7 @@
             <td>{{item[4]}}</td>
             <td>{{item[2]}}</td>
             <td>{{item[1]}}</td>
+            <td>{{item[3]}}</td>
             <td>
                 <form action="/delete" method="post">
                     <input type="hidden" name="Weapon_id" value="{{item[0]}}">
@@ -40,64 +42,3 @@
         {% endfor %}
 </body>
 </html>
-
-
-<!--<th>Weapon</th>
-            <th>wear</th>
-            <th>Skin</th>
-        
-        </tr>
-        {% for item in results %}
-        <tr>
-            <td>{{item[4]}}</td>
-            <td>{{item[2]}}</td>
-            <td>{{item[1]}}</td>
-        </tr>-->
-
-<!--{% for item in results %}
-    <h1>{{item[1]}} {{item[2]}} {{item[3]}}</h1>
-    {% endfor %}
-
-        <tr>
-            <th>Weapon</th>
-            <th>wear</th>
-            <th>Skin</th>
-        </tr>
-        <tr>
-            <td>
-                <h1>{{item[5]}}</h1>
-            </td>
-            <td>
-                <h1>{{item[3]}}</h1>
-
-            </td>
-            <td>
-                <h1>{{item[2]}}</h1>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <h1>{{item[5]}}</h1>
-            </td>
-            <td>
-                <h1>{{item[3]}}</h1>
-
-            </td>
-            <td>
-                <h1>{{item[2]}}</h1>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <h1>{{item[5]}}</h1>
-            </td>
-            <td>
-                <h1>{{item[3]}}</h1>
-            </td>
-            <td>
-                <h1>{{item[2]}}</h1>
-            </td>
-        </tr>
-        {% endfor %}
-
-    
