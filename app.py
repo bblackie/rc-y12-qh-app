@@ -37,7 +37,16 @@ def add():
         sql = "INSERT INTO CS_Skins(Weapon_id, Wear, Skin_Name) VALUES (?,?,?)"
         cursor.execute(sql,(New_Weapon_id,New_Wear,New_Skin_Name))
         get_db().commit()
+    return redirect("/")
 
+@app.route('/delete', methods=["GET","POST"])
+def delete():
+    if request.method == "POST":
+        cursor = get_db().cursor()
+        Weapon_id = int(request.form["Weapon_id"])
+        sql = "DELETE FROM CS_Skins WHERE Weapon_id = ?"
+        cursor.execute(sql,(Weapon_id,))
+        get_db().commit()
     return redirect("/")
     
 if __name__=="__main__":
