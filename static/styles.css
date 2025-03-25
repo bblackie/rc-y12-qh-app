@@ -1,4 +1,4 @@
-body {
+/*body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
@@ -68,15 +68,28 @@ input[type="submit"]:hover {
     background-color: #ff6b6b;
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3 {
     margin: 10px 0;
-    color: green;
+}
+
+/* Delete Button Styling */
+td form {
+    margin: 0;
+    display: inline;
+    border: none;
+    background: none;
+    padding: 0;
+}
 }
 
 input[type="submit"][value="delete"] {
     background-color: #000000;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
 input[type="submit"][value="delete"]:hover {
-    background-color: #000000;
+    background-color: #c9302c;
 }

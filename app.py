@@ -22,10 +22,23 @@ def close_connection(exception):
 @app.route("/")
 def home():
     cursor = get_db().cursor()
-    sql ="SELECT * FROM CS_Skins"
+    sql ="""
+select Catigory_Wepons.weapon_name, weapon_name, CS_Skins.Wear,
+CS_Skins.Skin_Name, CS_Skins.Price
+from CS_Skins
+join Catigory_Wepons
+on CS_Skins.Weapon_id = Catigory_Wepons.id
+"""
     cursor.execute(sql)
     results = cursor.fetchall()
-    return render_template("contents.html", results=results)
+
+    cur = get_db().cursor()
+    sql = "select * FROM catigory_Wepons" 
+    cur.execute(sql)
+    catigory_Wepons = cur.fetchall()
+
+
+    return render_template("contents.html", results=results, catigory_Wepons=catigory_Wepons)
 
 @app.route('/add', methods=["GET","POST"])
 def add():
@@ -44,10 +57,12 @@ def delete():
     if request.method == "POST":
         cursor = get_db().cursor()
         Weapon_id = int(request.form["Weapon_id"])
-        sql = "DELETE FROM CS_Skins WHERE Weapon_id = ?"
+        sql = """DELETE FROM CS_Skins WHERE id = ?"""
         cursor.execute(sql,(Weapon_id,))
         get_db().commit()
     return redirect("/")
-    
+
+
+        
 if __name__=="__main__":
     app.run(debug=True)

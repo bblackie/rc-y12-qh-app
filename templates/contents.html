@@ -12,15 +12,23 @@
     <form action="/add" method="post">
     <h2>Enter a new weapon</h2>
     <h3>Weapon Name</h3>
-    <input type="text" name="Weapon_id">
-    </h3>Wear</h3>
+    <label for="cars">Choose a Weapon:</label>
+
+    <select name="weapons" id="weapons">
+    {% for item in catigory_Wepons %}
+    <option value="{{item[0]}}">{{item[1]}}</option>
+    {% endfor %}
+</select>
+
+    <h3>Wear</h3>
     <input type="text" name="Weapon_Wear">
-    </h3>Skin Name</h3>
+    <h3>Skin Name</h3>
     <input type="text" name="Skin_Name">
     <h3>$Price$</h3>
     <input type="int" name="Price">
     <input type="submit" value="add">
     <table>
+        
         <tr>
             <th>Weapon</th>
             <th>wear</th>
@@ -30,15 +38,17 @@
         </tr>
         {% for item in results %}
         <tr>
-            <td>{{item[4]}}</td>
-            <td>{{item[2]}}</td>
             <td>{{item[1]}}</td>
+            <td>{{item[2]}}</td>
             <td>{{item[3]}}</td>
+            <td>{{item[4]}}</td>
             <td>
+                
                 <form action="/delete" method="post">
                     <input type="hidden" name="Weapon_id" value="{{item[0]}}">
                     <input type="submit" value="delete">
                 </form>
+                
             </td>
         </tr>
         {% endfor %}
