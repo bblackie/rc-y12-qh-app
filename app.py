@@ -44,11 +44,12 @@ on CS_Skins.Weapon_id = Catigory_Wepons.id
 def add():
     if request.method == "POST":
         cursor = get_db().cursor()
-        New_Weapon_id = request.form["Weapon_id"]
-        New_Wear = request.form["Weapon_Wear"]
-        New_Skin_Name = request.form["Skin_Name"]
-        sql = "INSERT INTO CS_Skins(Weapon_id, Wear, Skin_Name) VALUES (?,?,?)"
-        cursor.execute(sql,(New_Weapon_id,New_Wear,New_Skin_Name))
+        Weapon_id = request.form["Weapon_id"]
+        Wear = request.form["Weapon_Wear"]
+        Skin_Name = request.form["Skin_Name"]
+        price = request.form["Price"]
+        sql = "INSERT INTO CS_Skins(Weapon_id, Wear, Skin_Name, Price) VALUES (?,?,?,?)"
+        cursor.execute(sql,(Weapon_id,Wear,Skin_Name,price))
         get_db().commit()
     return redirect("/")
 
@@ -56,8 +57,8 @@ def add():
 def delete():
     if request.method == "POST":
         cursor = get_db().cursor()
-        Weapon_id = int(request.form["Weapon_id"])
-        sql = """DELETE FROM CS_Skins WHERE id = ?"""
+        Weapon_id = int (request.form["Weapon_id"])
+        sql = "DELETE FROM CS_Skins WHERE id = ?"
         cursor.execute(sql,(Weapon_id,))
         get_db().commit()
     return redirect("/")
