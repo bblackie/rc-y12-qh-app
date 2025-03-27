@@ -12,13 +12,14 @@
     <form action="/add" method="post">
     <h2>Enter a new weapon</h2>
     <h3>Weapon Name</h3>
-    <label for="cars">Choose a Weapon:</label>
-
-    <select name="weapons" id="weapons">
+    
+    <label for="Weapon_id">Choose a Weapon:</label>
+<select name="Weapon_id" id="Weapon_id">
     {% for item in catigory_Wepons %}
-    <option value="{{item[0]}}">{{item[1]}}</option>
+    <option value="{{ item[0] }}">{{ item[1] }}</option>
     {% endfor %}
 </select>
+
 
     <h3>Wear</h3>
     <input type="text" name="Weapon_Wear">

@@ -40,18 +40,20 @@ on CS_Skins.Weapon_id = Catigory_Wepons.id
 
     return render_template("contents.html", results=results, catigory_Wepons=catigory_Wepons)
 
-@app.route('/add', methods=["GET","POST"])
+@app.route('/add', methods=["POST"])
 def add():
     if request.method == "POST":
         cursor = get_db().cursor()
-        Weapon_id = request.form["Weapon_id"]
+        Weapon_id = request.form["Weapon_id"]  # Get the selected weapon's ID
         Wear = request.form["Weapon_Wear"]
         Skin_Name = request.form["Skin_Name"]
-        price = request.form["Price"]
-        sql = "INSERT INTO CS_Skins(Weapon_id, Wear, Skin_Name, Price) VALUES (?,?,?,?)"
-        cursor.execute(sql,(Weapon_id,Wear,Skin_Name,price))
+        price = request.form["Price"]  # Ensure "Price" matches the form input name
+        sql = "INSERT INTO CS_Skins (Weapon_id, Wear, Skin_Name, Price) VALUES (?, ?, ?, ?)"
+        cursor.execute(sql, (Weapon_id, Wear, Skin_Name, price))
         get_db().commit()
+
     return redirect("/")
+
 
 @app.route('/delete', methods=["GET","POST"])
 def delete():
