@@ -57,9 +57,9 @@ def add():
 def delete():
     if request.method == "POST":
         cursor = get_db().cursor()
-        Weapon_id = int (request.form["Weapon_id"])
-        sql = "DELETE FROM CS_Skins WHERE id = ?"
-        cursor.execute(sql,(Weapon_id,))
+        id = int(request.form["Weapon_id"])
+        sql = "DELETE FROM CS_Skins WHERE id=?"
+        cursor.execute(sql,(id,))
         get_db().commit()
     return redirect("/")
 
