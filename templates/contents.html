@@ -4,54 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href={{url_for('static',filename='styles.css')}}>
-    <title>contents</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Contents</title>
 </head>
 <body>
-    </table>
-    <form action="/add" method="post">
+
+    <!-- Search Form -->
+    <form action="/" method="post">
+        <input type="text" name="search" placeholder="Search for skins or weapons">
+        <input type="submit" value="Search">
+    </form>
+
     <h2>Enter a new weapon</h2>
-    <h3>Weapon Name</h3>
-    
-    <label for="Weapon_id">Choose a Weapon:</label>
-<select name="Weapon_id" id="Weapon_id">
-    {% for item in catigory_Wepons %}
-    <option value="{{ item[0] }}">{{ item[1] }}</option>
-    {% endfor %}
-</select>
 
+    <!-- Add New Weapon Form -->
+    <form action="/add" method="post">
+        <h3>Weapon Name</h3>
+        <label for="Weapon_id">Choose a Weapon:</label>
+        <select name="Weapon_id" id="Weapon_id">
+            {% for item in catigory_Wepons %}
+            <option value="{{ item[0] }}">{{ item[1] }}</option>
+            {% endfor %}
+        </select>
 
-    <h3>Wear</h3>
-    <input type="text" name="Weapon_Wear">
-    <h3>Skin Name</h3>
-    <input type="text" name="Skin_Name">
-    <h3>$Price$</h3>
-    <input type="text" name="Price">
-    <input type="submit" value="add">
-    <table>
-        
+        <h3>Wear</h3>
+        <input type="text" name="Weapon_Wear" required>
+
+        <h3>Skin Name</h3>
+        <input type="text" name="Skin_Name" required>
+
+        <h3>Price ($)</h3>
+        <input type="number" name="Price" step="0.01" required>
+
+        <br><br>
+        <input type="submit" value="Add">
+    </form>
+
+    <br>
+
+    <!-- Table to Display Weapons -->
+    <table border="1">
         <tr>
             <th>Weapon</th>
-            <th>wear</th>
+            <th>Wear</th>
             <th>Skin</th>
-            <th>$Price$</th>
-            <th>delete</th>
+            <th>Price ($)</th>
+            <th>Delete</th>
         </tr>
+        
         {% for item in results %}
         <tr>
-            <td>{{item[1]}}</td>
-            <td>{{item[2]}}</td>
-            <td>{{item[3]}}</td>
-            <td>{{item[4]}}</td>
+            <td>{{ item[1] }}</td>
+            <td>{{ item[2] }}</td>
+            <td>{{ item[3] }}</td>
+            <td>{{ item[4] }}</td>
             <td>
-                
                 <form action="/delete" method="post">
-                    <input type="hidden" name="Weapon_id" value="{{item[0]}}">
-                    <input type="submit" value="delete">
+                    <input type="hidden" name="Weapon_id" value="{{ item[0] }}">
+                    <input type="submit" value="Delete">
                 </form>
-                
             </td>
         </tr>
         {% endfor %}
+    </table>
+
 </body>
 </html>
