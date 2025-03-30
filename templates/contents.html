@@ -61,7 +61,7 @@
             <td>{{ item[4] }}</td>
             <td>
                 <form action="/delete" method="post">
-                    <input type="hidden" name="Weapon_id" value="{{item[0]}}">
+                    <input type="hidden" name="id" value="{{ item[0] }}">
                     <input type="submit" value="Delete">
                 </form>
             </td>

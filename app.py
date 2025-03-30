@@ -23,11 +23,11 @@ def close_connection(exception):
 def home():
     cursor = get_db().cursor()
     sql ="""
-select Catigory_Wepons.weapon_name, weapon_name, CS_Skins.Wear,
-CS_Skins.Skin_Name, CS_Skins.Price
-from CS_Skins
-join Catigory_Wepons
-on CS_Skins.Weapon_id = Catigory_Wepons.id
+SELECT CS_Skins.id, Catigory_Wepons.weapon_name, CS_Skins.Wear,
+       CS_Skins.Skin_Name, CS_Skins.Price
+FROM CS_Skins
+JOIN Catigory_Wepons
+ON CS_Skins.Weapon_id = Catigory_Wepons.id
 """
     cursor.execute(sql)
     results = cursor.fetchall()
@@ -48,7 +48,7 @@ def add():
         Wear = request.form["Weapon_Wear"]
         Skin_Name = request.form["Skin_Name"]
         price = request.form["Price"]
-        sql = "INSERT INTO CS_Skins(Weapon_id, Wear, Skin_Name, Price) VALUES (?,?,?,?)"
+        sql = "INSERT INTO CS_Skins(Weapon_id, Wear, Skin_Name, Price) VALUES (?,?,?,?)"    
         cursor.execute(sql,(Weapon_id,Wear,Skin_Name,price))
         get_db().commit()
     return redirect("/")
@@ -57,7 +57,7 @@ def add():
 def delete():
     if request.method == "POST":
         cursor = get_db().cursor()
-        id = int(request.form["Weapon_id"])
+        id = int(request.form["id"])
         sql = "DELETE FROM CS_Skins WHERE id=?"
         cursor.execute(sql,(id,))
         get_db().commit()
